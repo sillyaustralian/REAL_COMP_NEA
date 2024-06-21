@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3d6k706s0ah6"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_05m4l"]
+[ext_resource type="Texture2D" uid="uid://dcgus4rtaymwl" path="res://Sprites/Debug - playerSprite.png" id="1_yc0vr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fc5io"]
+atlas = ExtResource("1_yc0vr")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ed8bw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fc5io")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Run",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2jiey"]
+radius = 6.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+position = Vector2(0, -8)
+script = ExtResource("1_05m4l")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ed8bw")
+animation = &"Run"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_2jiey")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.4
