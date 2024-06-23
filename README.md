@@ -2,10 +2,10 @@
 Computer science coursework but real this time
 
 --Version Alpha--
-  -Added basic movement
-  -Added Dash
-  -Added basic camera change
-  -Altered camera zoom
+  \n-Added basic movement
+  \n-Added Dash
+  \n-Added basic camera change
+  \n-Altered camera zoom
 
 
 ==TO ADD==
