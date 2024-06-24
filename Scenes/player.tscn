@@ -1,7 +1,23 @@
-[gd_scene load_steps=37 format=3 uid="uid://c3d6k706s0ah6"]
+[gd_scene load_steps=40 format=3 uid="uid://c3d6k706s0ah6"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_05m4l"]
-[ext_resource type="Texture2D" uid="uid://c5w4ghwobq4i0" path="res://Sprites/Character sprites/MainCharacter.png" id="2_yjbxt"]
+[ext_resource type="Texture2D" uid="uid://c5w4ghwobq4i0" path="res://Sprites/Character Sprites/MainCharacter.png" id="2_yjbxt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rt4q7"]
+atlas = ExtResource("2_yjbxt")
+region = Rect2(0, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3rpgc"]
+atlas = ExtResource("2_yjbxt")
+region = Rect2(32, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwoas"]
+atlas = ExtResource("2_yjbxt")
+region = Rect2(48, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8cr5k"]
+atlas = ExtResource("2_yjbxt")
+region = Rect2(16, 160, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tj8oi"]
 atlas = ExtResource("2_yjbxt")
@@ -127,12 +143,30 @@ region = Rect2(16, 80, 16, 16)
 atlas = ExtResource("2_yjbxt")
 region = Rect2(48, 80, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hhyj1"]
-atlas = ExtResource("2_yjbxt")
-region = Rect2(64, 80, 16, 16)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_ed8bw"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rt4q7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3rpgc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwoas")
+}],
+"loop": true,
+"name": &"Dash",
+"speed": 13.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8cr5k")
+}],
+"loop": true,
+"name": &"Death",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tj8oi")
@@ -236,9 +270,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_paqgi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hhyj1")
 }],
 "loop": true,
 "name": &"Run",
@@ -254,9 +285,7 @@ script = ExtResource("1_05m4l")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ed8bw")
-animation = &"Jump"
-frame = 6
-frame_progress = 0.387577
+animation = &"Run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
