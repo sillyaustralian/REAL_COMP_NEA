@@ -4,9 +4,6 @@ extends Area2D
 @onready var player = $"../../Player"
 
 func _on_body_entered(body):
-	if body.name == "Player":
-		print("CamUP")
-		camera.limit_bottom = 100
-		camera.limit_right = camera.limit_right
-		camera.limit_left = camera.limit_left
-		camera.limit_top = camera.limit_top
+	if body.name == "Player": #checks if player contacted collision zone
+		camera.limit_bottom = 100 #raises camera limit
+		GlobalVars.last_cam_limit_bottom = 100
