@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://c1413e1nv71do"]
+
+[ext_resource type="FontFile" uid="uid://1rwluljwfpin" path="res://Sprites/Fonts/PixelifySans-Bold.ttf" id="1_2x66t"]
+[ext_resource type="Script" path="res://Scripts/UI/pause_menu.gd" id="1_ldurt"]
+[ext_resource type="Shader" path="res://Shaders/pause_menu.gdshader" id="3_er5xk"]
+[ext_resource type="AudioStream" uid="uid://dac0eu8hnqcnn" path="res://SFX/Random_button_1 .wav" id="4_v5bce"]
+[ext_resource type="AudioStream" uid="uid://qpvdhyik2i5x" path="res://SFX/Random_button_2 .wav" id="5_j3dwh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1f2jr"]
+shader = ExtResource("3_er5xk")
+shader_parameter/amount = 2.0
+
+[node name="Pause_menu" type="CanvasLayer"]
+script = ExtResource("1_ldurt")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_1f2jr")
+offset_right = 1152.0
+offset_bottom = 648.0
+scale = Vector2(2, 2)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.5
+offset_top = -46.0
+offset_right = 35.5
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Resume" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_2x66t")
+text = "Resume"
+
+[node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_2x66t")
+text = "Options"
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_2x66t")
+text = "Quit"
+
+[node name="sfx" type="Node" parent="."]
+
+[node name="random_button_1" type="AudioStreamPlayer2D" parent="sfx"]
+stream = ExtResource("4_v5bce")
+volume_db = -35.0
+bus = &"SFX"
+
+[node name="random_button_2" type="AudioStreamPlayer2D" parent="sfx"]
+stream = ExtResource("5_j3dwh")
+bus = &"SFX"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

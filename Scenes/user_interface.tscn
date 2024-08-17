@@ -1,0 +1,205 @@
+[gd_scene load_steps=17 format=3 uid="uid://euc0l763kuou"]
+
+[ext_resource type="Texture2D" uid="uid://byp4kvhlwr8l8" path="res://Sprites/Special Sprites/hearts.png" id="1_n5ajv"]
+[ext_resource type="Script" path="res://Scripts/UI/user_interface.gd" id="1_o5spq"]
+[ext_resource type="Texture2D" uid="uid://d18b5u8o5gxd0" path="res://Sprites/Special Sprites/potions/healing_potion.png" id="3_h020s"]
+[ext_resource type="FontFile" uid="uid://u0lnyy0sdrmu" path="res://Sprites/Fonts/PixelifySans-Medium.ttf" id="4_37wyo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r72su"]
+atlas = ExtResource("1_n5ajv")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igrdn"]
+atlas = ExtResource("1_n5ajv")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_muymx"]
+atlas = ExtResource("1_n5ajv")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prinb"]
+atlas = ExtResource("1_n5ajv")
+region = Rect2(32, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sayn4"]
+atlas = ExtResource("1_n5ajv")
+region = Rect2(64, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvndr"]
+atlas = ExtResource("1_n5ajv")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqont"]
+atlas = ExtResource("1_n5ajv")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rd4bg"]
+atlas = ExtResource("1_n5ajv")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xn36m"]
+atlas = ExtResource("1_n5ajv")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofr72"]
+atlas = ExtResource("1_n5ajv")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4dvj5"]
+atlas = ExtResource("1_n5ajv")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mti4b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r72su")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_igrdn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_muymx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_prinb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sayn4")
+}],
+"loop": false,
+"name": &"Healing_heart",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvndr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rqont")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rd4bg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xn36m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ofr72")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4dvj5")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"Heart_broken",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"blank",
+"speed": 5.0
+}]
+
+[node name="User Interface" type="CanvasLayer"]
+script = ExtResource("1_o5spq")
+
+[node name="Lives" type="Node" parent="."]
+
+[node name="Heart1" type="Node" parent="Lives"]
+
+[node name="Heart1_broken" type="AnimatedSprite2D" parent="Lives/Heart1"]
+z_index = 1
+position = Vector2(260, 100)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_mti4b")
+animation = &"Healing_heart"
+autoplay = "blank"
+
+[node name="Heart1" type="Sprite2D" parent="Lives/Heart1"]
+position = Vector2(260, 100)
+scale = Vector2(4, 4)
+texture = ExtResource("1_n5ajv")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 32)
+
+[node name="Heart1_Empty" type="Sprite2D" parent="Lives/Heart1"]
+z_index = -1
+position = Vector2(260, 100)
+scale = Vector2(4, 4)
+texture = ExtResource("1_n5ajv")
+region_enabled = true
+region_rect = Rect2(64, 0, 32, 32)
+
+[node name="Heart2" type="Node" parent="Lives"]
+
+[node name="Heart2_broken" type="AnimatedSprite2D" parent="Lives/Heart2"]
+z_index = 1
+position = Vector2(180, 100)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_mti4b")
+animation = &"Heart_broken"
+autoplay = "blank"
+
+[node name="Heart2" type="Sprite2D" parent="Lives/Heart2"]
+position = Vector2(180, 100)
+scale = Vector2(4, 4)
+texture = ExtResource("1_n5ajv")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 32)
+
+[node name="Heart2_Empty" type="Sprite2D" parent="Lives/Heart2"]
+z_index = -1
+position = Vector2(180, 100)
+scale = Vector2(4, 4)
+texture = ExtResource("1_n5ajv")
+region_enabled = true
+region_rect = Rect2(64, 0, 32, 32)
+
+[node name="Heart3" type="Node" parent="Lives"]
+
+[node name="Heart3_broken" type="AnimatedSprite2D" parent="Lives/Heart3"]
+z_index = 1
+position = Vector2(100, 100)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_mti4b")
+animation = &"Healing_heart"
+autoplay = "blank"
+
+[node name="Heart3" type="Sprite2D" parent="Lives/Heart3"]
+position = Vector2(100, 100)
+scale = Vector2(4, 4)
+texture = ExtResource("1_n5ajv")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 32)
+
+[node name="Heart3_Empty" type="Sprite2D" parent="Lives/Heart3"]
+z_index = -1
+position = Vector2(100, 100)
+scale = Vector2(4, 4)
+texture = ExtResource("1_n5ajv")
+region_enabled = true
+region_rect = Rect2(64, 0, 32, 32)
+
+[node name="heal_potions" type="Node" parent="."]
+
+[node name="heal_potion_sprite" type="Sprite2D" parent="heal_potions"]
+position = Vector2(100, 160)
+scale = Vector2(4, 4)
+texture = ExtResource("3_h020s")
+region_enabled = true
+region_rect = Rect2(16, 0, 16, 16)
+
+[node name="heals_count" type="Label" parent="heal_potions"]
+offset_left = 120.0
+offset_top = 160.0
+offset_right = 181.0
+offset_bottom = 190.0
+theme_override_fonts/font = ExtResource("4_37wyo")
+theme_override_font_sizes/font_size = 24
+text = "x [num]"

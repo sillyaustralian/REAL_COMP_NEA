@@ -1,20 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://bk22fbqm81414"]
+[gd_scene load_steps=3 format=3 uid="uid://bk22fbqm81414"]
 
-[ext_resource type="PackedScene" uid="uid://berixba5mwjky" path="res://Scenes/killzone.tscn" id="2_35shs"]
+[ext_resource type="Script" path="res://Scripts/spike_respawn.gd" id="1_boebt"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k8vdk"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t1ds3"]
 size = Vector2(14, 3)
 
-[sub_resource type="GDScript" id="GDScript_6fvos"]
-script/source = "extends CollisionShape2D
-
-"
-
 [node name="Spikes" type="Node2D"]
+z_index = 10
 
-[node name="killzone" parent="." instance=ExtResource("2_35shs")]
+[node name="spiky_killzone" type="Area2D" parent="."]
+z_index = 10
+script = ExtResource("1_boebt")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spiky_killzone"]
+z_index = 10
 position = Vector2(0, 3.5)
-shape = SubResource("RectangleShape2D_k8vdk")
-script = SubResource("GDScript_6fvos")
+shape = SubResource("RectangleShape2D_t1ds3")
+
+[connection signal="body_entered" from="spiky_killzone" to="spiky_killzone" method="_on_body_entered"]

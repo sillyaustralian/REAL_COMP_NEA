@@ -1,0 +1,140 @@
+[gd_scene load_steps=18 format=3 uid="uid://bxopyxopt7tr7"]
+
+[ext_resource type="Script" path="res://Scripts/lil_guy.gd" id="1_t63et"]
+[ext_resource type="Texture2D" uid="uid://bheajgyhuencv" path="res://Sprites/Character Sprites/Enemies/Basic Enemies.png" id="2_vycfx"]
+[ext_resource type="PackedScene" uid="uid://berixba5mwjky" path="res://Scenes/killzone.tscn" id="3_3rf11"]
+[ext_resource type="Script" path="res://Scripts/player_attacked/Player_attacked_lil_guy.gd" id="4_3x8yb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_myuas"]
+atlas = ExtResource("2_vycfx")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqh7v"]
+atlas = ExtResource("2_vycfx")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgij1"]
+atlas = ExtResource("2_vycfx")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ro1t8"]
+atlas = ExtResource("2_vycfx")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vqry"]
+atlas = ExtResource("2_vycfx")
+region = Rect2(64, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvd3g"]
+atlas = ExtResource("2_vycfx")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10qrd"]
+atlas = ExtResource("2_vycfx")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tw58i"]
+atlas = ExtResource("2_vycfx")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vx5i7"]
+atlas = ExtResource("2_vycfx")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5aq5"]
+atlas = ExtResource("2_vycfx")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v2dpx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myuas")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqh7v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgij1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ro1t8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vqry")
+}],
+"loop": true,
+"name": &"death",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvd3g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10qrd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tw58i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vx5i7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k5aq5")
+}],
+"loop": true,
+"name": &"idle_walk",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i52a5"]
+radius = 1.99998
+height = 7.99992
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ld5qg"]
+radius = 3.0
+height = 12.0
+
+[node name="lil_guy" type="Node2D"]
+script = ExtResource("1_t63et")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_v2dpx")
+animation = &"death"
+
+[node name="killzone" parent="." instance=ExtResource("3_3rf11")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
+position = Vector2(-1, 5)
+rotation = 1.57533
+shape = SubResource("CapsuleShape2D_i52a5")
+
+[node name="Player_attacked?" type="Area2D" parent="." groups=["enemies"]]
+script = ExtResource("4_3x8yb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player_attacked?"]
+position = Vector2(0, 5)
+rotation = 1.56982
+shape = SubResource("CapsuleShape2D_ld5qg")
+
+[node name="killzone_despawn" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="death_animation" type="Timer" parent="."]
+wait_time = 0.4
+
+[node name="been_hit" type="Timer" parent="."]
+wait_time = 0.25
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(0, 5)
+target_position = Vector2(9, 0)
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(0, 5)
+target_position = Vector2(-9, 0)
+
+[connection signal="timeout" from="killzone_despawn" to="." method="_on_killzone_despawn_timeout"]
+[connection signal="timeout" from="death_animation" to="." method="_on_death_animation_timeout"]
+[connection signal="timeout" from="been_hit" to="." method="_on_been_hit_timeout"]

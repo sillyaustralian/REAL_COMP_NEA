@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://bpixg3mag0ske"]
+
+[ext_resource type="Script" path="res://Scripts/enemies/rock_projectile.gd" id="1_b4ddb"]
+[ext_resource type="Texture2D" uid="uid://dkwf746eo4gdv" path="res://Sprites/Character Sprites/Enemies/Projectile_slime.png" id="1_jqduf"]
+[ext_resource type="PackedScene" uid="uid://berixba5mwjky" path="res://Scenes/killzone.tscn" id="2_cjigw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wpwen"]
+radius = 3.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e7kq5"]
+radius = 2.0
+
+[node name="Rock_projectile" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_b4ddb")
+
+[node name="Projectile" type="Sprite2D" parent="."]
+texture = ExtResource("1_jqduf")
+region_enabled = true
+region_rect = Rect2(20, 19, 8, 6)
+
+[node name="killzone" parent="." instance=ExtResource("2_cjigw")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
+shape = SubResource("CircleShape2D_wpwen")
+
+[node name="Colliding" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliding"]
+shape = SubResource("CircleShape2D_e7kq5")
+
+[node name="is_projectile" type="Node" parent="."]
+
+[connection signal="area_entered" from="Colliding" to="." method="_on_colliding_area_entered"]
+[connection signal="body_entered" from="Colliding" to="." method="_on_colliding_body_entered"]

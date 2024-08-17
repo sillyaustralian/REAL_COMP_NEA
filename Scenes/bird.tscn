@@ -1,0 +1,149 @@
+[gd_scene load_steps=21 format=3 uid="uid://bing3tmepvpcy"]
+
+[ext_resource type="Script" path="res://Scripts/bird_touched.gd" id="1_8esu0"]
+[ext_resource type="Texture2D" uid="uid://bdfdokxe3yvol" path="res://Sprites/Environmental Sprites/bird.png" id="2_3tsat"]
+[ext_resource type="AudioStream" uid="uid://b2kwgadym1vmt" path="res://SFX/Birdie.wav" id="3_oerxr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_luhcm"]
+radius = 6.08276
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubw12"]
+atlas = ExtResource("2_3tsat")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kjabl"]
+atlas = ExtResource("2_3tsat")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2pr8b"]
+atlas = ExtResource("2_3tsat")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5fo5"]
+atlas = ExtResource("2_3tsat")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwiqj"]
+atlas = ExtResource("2_3tsat")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsug3"]
+atlas = ExtResource("2_3tsat")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dc62e"]
+atlas = ExtResource("2_3tsat")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdbwb"]
+atlas = ExtResource("2_3tsat")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wv5cb"]
+atlas = ExtResource("2_3tsat")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvtuv"]
+atlas = ExtResource("2_3tsat")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2may"]
+atlas = ExtResource("2_3tsat")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0o2pl"]
+atlas = ExtResource("2_3tsat")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aa4pf"]
+atlas = ExtResource("2_3tsat")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pitay"]
+atlas = ExtResource("2_3tsat")
+region = Rect2(48, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8w3mg"]
+atlas = ExtResource("2_3tsat")
+region = Rect2(64, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ay7fe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ubw12")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjabl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2pr8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5fo5")
+}],
+"loop": true,
+"name": &"fly_away",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwiqj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bsug3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dc62e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rdbwb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wv5cb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dvtuv")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2may")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0o2pl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aa4pf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pitay")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8w3mg")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 10.0
+}]
+
+[node name="bird" type="Area2D"]
+script = ExtResource("1_8esu0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_luhcm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ay7fe")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="flutter" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_oerxr")
+volume_db = -20.0
+bus = &"SFX"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

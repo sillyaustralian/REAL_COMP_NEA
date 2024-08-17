@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://cxibkkdxp1q8k"]
+
+[ext_resource type="Texture2D" uid="uid://ihken3ro76uc" path="res://Sprites/Character Sprites/Basic Slash.png" id="1_65uvm"]
+[ext_resource type="Texture2D" uid="uid://c3nxe15k8f0tg" path="res://Sprites/Character Sprites/Basic Slash-sheet.png" id="2_yfv7i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2e278"]
+atlas = ExtResource("1_65uvm")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cwx7"]
+atlas = ExtResource("1_65uvm")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30wcf"]
+atlas = ExtResource("1_65uvm")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fawy3"]
+atlas = ExtResource("1_65uvm")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2u1s"]
+atlas = ExtResource("1_65uvm")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mwtl"]
+atlas = ExtResource("2_yfv7i")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hyj3f"]
+atlas = ExtResource("2_yfv7i")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ebwf4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2e278")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cwx7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_30wcf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fawy3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2u1s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mwtl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hyj3f")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"slash_attack",
+"speed": 24.0
+}]
+
+[node name="Slash_attack" type="AnimatedSprite2D"]
+scale = Vector2(2.875, 1.375)
+sprite_frames = SubResource("SpriteFrames_ebwf4")
+animation = &"slash_attack"
+frame = 8
+frame_progress = 1.0

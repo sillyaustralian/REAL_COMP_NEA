@@ -1,0 +1,130 @@
+[gd_scene load_steps=15 format=3 uid="uid://d1qk01ar62m5a"]
+
+[ext_resource type="Script" path="res://Scripts/zone_2/interactable_lava_spike_large.gd" id="1_7w5wn"]
+[ext_resource type="Texture2D" uid="uid://dp2y3fo5fe18f" path="res://Sprites/Special Sprites/Spikey_lava_things.png" id="1_uajf8"]
+[ext_resource type="AudioStream" uid="uid://2gmfe1nolyed" path="res://SFX/zone_2_environment/rock_1.mp3" id="3_xrytf"]
+[ext_resource type="AudioStream" uid="uid://y6huai3p84ur" path="res://SFX/zone_2_environment/rock_2.mp3" id="4_1cn1w"]
+[ext_resource type="AudioStream" uid="uid://crfds13ih6l2j" path="res://SFX/zone_2_environment/rock_3.mp3" id="5_gr5mj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kyamb"]
+atlas = ExtResource("1_uajf8")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q17uf"]
+atlas = ExtResource("1_uajf8")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hlto5"]
+atlas = ExtResource("1_uajf8")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vi8lj"]
+atlas = ExtResource("1_uajf8")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bkwl3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kyamb")
+}],
+"loop": false,
+"name": &"large_lava_spike",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q17uf")
+}],
+"loop": true,
+"name": &"large_spike",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hlto5")
+}],
+"loop": false,
+"name": &"medium_lava_spike",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vi8lj")
+}],
+"loop": false,
+"name": &"medium_spike",
+"speed": 1.0
+}]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3qg05"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nwtts"]
+radius = 3.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5161r"]
+radius = 3.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_syxfp"]
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[node name="interactable_lava_spike_large" type="Node2D"]
+
+[node name="spikes" type="AnimatedSprite2D" parent="."]
+z_index = -1
+sprite_frames = SubResource("SpriteFrames_bkwl3")
+animation = &"large_spike"
+autoplay = "large_lava_spike"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_3qg05")
+
+[node name="large_lava_spike" type="Sprite2D" parent="StaticBody2D"]
+z_index = -1
+position = Vector2(0, -8)
+texture = ExtResource("1_uajf8")
+region_enabled = true
+region_rect = Rect2(48, 0, 16, 16)
+
+[node name="large_spike_top" type="Sprite2D" parent="StaticBody2D"]
+z_index = -1
+position = Vector2(0, -8)
+texture = ExtResource("1_uajf8")
+region_enabled = true
+region_rect = Rect2(32, 0, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CapsuleShape2D_nwtts")
+
+[node name="area_damage" type="Area2D" parent="StaticBody2D" groups=["enemies"]]
+script = ExtResource("1_7w5wn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/area_damage"]
+shape = SubResource("CapsuleShape2D_5161r")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_syxfp")
+emitting = false
+amount = 24
+one_shot = true
+explosiveness = 1.0
+direction = Vector2(0, -1)
+gravity = Vector2(0, 1100)
+initial_velocity_min = 13.88
+initial_velocity_max = 319.44
+scale_amount_max = 5.0
+color = Color(0.336607, 0.336608, 0.336608, 1)
+anim_speed_min = 19.56
+anim_speed_max = 40.89
+
+[node name="rock_1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_xrytf")
+
+[node name="rock_2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_1cn1w")
+
+[node name="rock_3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_gr5mj")

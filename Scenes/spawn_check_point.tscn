@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bau657di2h6gs"]
+
+[ext_resource type="Script" path="res://Scripts/SpawnCheckPointZone1_L1.gd" id="1_rvdid"]
+
+[node name="SpawnCheckPoint" type="Area2D"]
+script = ExtResource("1_rvdid")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

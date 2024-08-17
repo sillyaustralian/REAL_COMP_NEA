@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfu2t5lymugwr"]
+
+[ext_resource type="Script" path="res://Scripts/DATABASES/attempt1DB.gd" id="1_bsuap"]
+[ext_resource type="PackedScene" uid="uid://ct0bwpv4urodq" path="res://Scenes/dialogue_box.tscn" id="2_2c1oi"]
+
+[node name="Dialogue_database" type="Node"]
+script = ExtResource("1_bsuap")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("2_2c1oi")]

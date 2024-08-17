@@ -1,0 +1,166 @@
+[gd_scene load_steps=18 format=3 uid="uid://ct0bwpv4urodq"]
+
+[ext_resource type="FontFile" uid="uid://161m2oei1q84" path="res://Sprites/Fonts/PixelifySans-SemiBold.ttf" id="1_g165y"]
+[ext_resource type="Script" path="res://Scripts/dialogue_script(s)/dialogue_box.gd" id="1_oysu3"]
+[ext_resource type="Texture2D" uid="uid://c6jmak5it0085" path="res://Sprites/Bosses/Dwarven_Brute.png" id="3_bm1qa"]
+[ext_resource type="Texture2D" uid="uid://ccbtjtt6cu4l6" path="res://Sprites/Character Sprites/NPCs/Salazar The Almighty (John).png" id="3_dbj1y"]
+[ext_resource type="AudioStream" uid="uid://bpq8kgl28r2k8" path="res://SFX/Gerald/Ho Huah!!.wav" id="4_4rg5d"]
+[ext_resource type="AudioStream" uid="uid://dmp8viy7xltph" path="res://SFX/Gerald/Re hm weh ha hau.wav" id="5_4xblt"]
+[ext_resource type="AudioStream" uid="uid://bvd5yhticfqmy" path="res://SFX/Gerald/Hm wal hm wal geeble goo.wav" id="6_06hl2"]
+[ext_resource type="AudioStream" uid="uid://ceho3oumw6o0r" path="res://SFX/Dwarven_brute/Brute_sound_1.wav" id="8_lc0gq"]
+[ext_resource type="AudioStream" uid="uid://d1wftpjgi4ud2" path="res://SFX/Dwarven_brute/Brute_sound_2.wav" id="9_dkt2t"]
+[ext_resource type="AudioStream" uid="uid://bkyihca1iq7rn" path="res://SFX/Dwarven_brute/Brute_sound_3.wav" id="10_aj43i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_32l7y"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3g18s"]
+atlas = ExtResource("3_bm1qa")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yoblr"]
+atlas = ExtResource("3_dbj1y")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b03oi"]
+atlas = ExtResource("3_dbj1y")
+region = Rect2(16, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnlk6"]
+atlas = ExtResource("3_dbj1y")
+region = Rect2(32, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8heic"]
+atlas = ExtResource("3_dbj1y")
+region = Rect2(48, 64, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_umxkf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"Auto_blank",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3g18s")
+}],
+"loop": true,
+"name": &"Dwarven_brute",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yoblr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b03oi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vnlk6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8heic")
+}],
+"loop": true,
+"name": &"Gerald",
+"speed": 8.0
+}]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_oysu3")
+
+[node name="TextboxContainer" type="MarginContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -536.0
+offset_top = 40.0
+offset_right = 536.0
+offset_bottom = 240.0
+grow_horizontal = 2
+size_flags_horizontal = 8
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Panel" type="Panel" parent="TextboxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_32l7y")
+
+[node name="MarginContainer" type="MarginContainer" parent="TextboxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 196
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextboxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Beginning" type="Label" parent="TextboxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("1_g165y")
+theme_override_font_sizes/font_size = 72
+text = "*"
+
+[node name="MainText" type="Label" parent="TextboxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("1_g165y")
+theme_override_font_sizes/font_size = 42
+text = "dialogue_default;"
+autowrap_mode = 3
+clip_text = true
+
+[node name="End" type="Label" parent="TextboxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("1_g165y")
+theme_override_font_sizes/font_size = 72
+text = "."
+
+[node name="character" type="AnimatedSprite2D" parent="TextboxContainer"]
+position = Vector2(120, 113)
+scale = Vector2(5.84375, 5.59375)
+sprite_frames = SubResource("SpriteFrames_umxkf")
+animation = &"Dwarven_brute"
+autoplay = "Auto_blank"
+
+[node name="gerald_sfx" type="Node" parent="."]
+
+[node name="Ho Huah!!" type="AudioStreamPlayer2D" parent="gerald_sfx"]
+stream = ExtResource("4_4rg5d")
+bus = &"SFX"
+
+[node name="Re hm weh ha hau" type="AudioStreamPlayer2D" parent="gerald_sfx"]
+stream = ExtResource("5_4xblt")
+bus = &"SFX"
+
+[node name="Hm wal hm wal geeble go" type="AudioStreamPlayer2D" parent="gerald_sfx"]
+stream = ExtResource("6_06hl2")
+bus = &"SFX"
+
+[node name="dwarven_brute_sfx" type="Node" parent="."]
+
+[node name="Brute_1" type="AudioStreamPlayer2D" parent="dwarven_brute_sfx"]
+stream = ExtResource("8_lc0gq")
+
+[node name="Brute_2" type="AudioStreamPlayer2D" parent="dwarven_brute_sfx"]
+stream = ExtResource("9_dkt2t")
+
+[node name="Brute_3" type="AudioStreamPlayer2D" parent="dwarven_brute_sfx"]
+stream = ExtResource("10_aj43i")

@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://csadgm2rvxdkc"]
+
+[ext_resource type="Texture2D" uid="uid://dfbayvc0mphsc" path="res://Sprites/Character Sprites/Enemies/Zone 2/Small_lava_enemy.png" id="1_0cmve"]
+[ext_resource type="Script" path="res://Scripts/zone_2/enemies/small_lava_pellet.gd" id="1_x11ll"]
+[ext_resource type="PackedScene" uid="uid://berixba5mwjky" path="res://Scenes/killzone.tscn" id="2_av057"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oekna"]
+radius = 2.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gj4be"]
+radius = 1.0
+
+[node name="small_lava_pellet" type="Node2D"]
+script = ExtResource("1_x11ll")
+
+[node name="pellet" type="Sprite2D" parent="."]
+texture = ExtResource("1_0cmve")
+region_enabled = true
+region_rect = Rect2(0, 48, 16, 16)
+
+[node name="killzone" parent="pellet" instance=ExtResource("2_av057")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pellet/killzone"]
+position = Vector2(0, 5)
+shape = SubResource("CircleShape2D_oekna")
+
+[node name="colliding" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="colliding"]
+position = Vector2(0, 5)
+shape = SubResource("CircleShape2D_gj4be")
+
+[connection signal="body_entered" from="colliding" to="." method="_on_colliding_body_entered"]

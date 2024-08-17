@@ -1,0 +1,96 @@
+[gd_scene load_steps=14 format=3 uid="uid://dcutmep7w7nmq"]
+
+[ext_resource type="Texture2D" uid="uid://c6jmak5it0085" path="res://Sprites/Bosses/Dwarven_Brute.png" id="1_lchoi"]
+[ext_resource type="Script" path="res://Scripts/enemies/Bosses/Dwarven_Brute/dwarven_brute_attack_2.gd" id="1_yy6hy"]
+[ext_resource type="Texture2D" uid="uid://blcg7fjj4ub11" path="res://Lighting_sprites/2d_lights_and_shadows_neutral_point_light.webp" id="3_fwfa5"]
+[ext_resource type="PackedScene" uid="uid://berixba5mwjky" path="res://Scenes/killzone.tscn" id="4_s5nlb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dx5d8"]
+atlas = ExtResource("1_lchoi")
+region = Rect2(224, 96, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_au1h0"]
+atlas = ExtResource("1_lchoi")
+region = Rect2(240, 96, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4mf1m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dx5d8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_au1h0")
+}],
+"loop": true,
+"name": &"Warning",
+"speed": 8.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o388h"]
+atlas = ExtResource("1_lchoi")
+region = Rect2(144, 96, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wdckj"]
+atlas = ExtResource("1_lchoi")
+region = Rect2(160, 96, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_doa3f"]
+atlas = ExtResource("1_lchoi")
+region = Rect2(176, 96, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbdpc"]
+atlas = ExtResource("1_lchoi")
+region = Rect2(192, 96, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tc7ah"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o388h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wdckj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_doa3f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbdpc")
+}],
+"loop": true,
+"name": &"spinning_hats",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q3pra"]
+radius = 5.0
+
+[node name="Dwarven_brute_attack_2" type="Node2D"]
+z_index = -1
+script = ExtResource("1_yy6hy")
+
+[node name="Warning hats" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -25)
+sprite_frames = SubResource("SpriteFrames_4mf1m")
+animation = &"Warning"
+autoplay = "Warning"
+frame = 1
+frame_progress = 0.0411649
+
+[node name="Actual hats" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tc7ah")
+animation = &"spinning_hats"
+autoplay = "spinning_hats"
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+range_z_min = -1
+range_z_max = 2
+texture = ExtResource("3_fwfa5")
+offset = Vector2(0, -5)
+texture_scale = 0.15
+
+[node name="killzone" parent="." instance=ExtResource("4_s5nlb")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
+shape = SubResource("CircleShape2D_q3pra")

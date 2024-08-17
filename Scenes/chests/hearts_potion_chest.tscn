@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://b06umlps0wtws"]
+
+[ext_resource type="Texture2D" uid="uid://cfo06tqfogadi" path="res://Sprites/Special Sprites/heart_chest.png" id="1_pd80p"]
+[ext_resource type="Script" path="res://Scripts/interactable scripts/give_potion.gd" id="2_1fy32"]
+[ext_resource type="AudioStream" uid="uid://bi65gawtq4v8c" path="res://SFX/Chests/Untitled 1 - 23:07:2024, 09.48.wav" id="3_ienhw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mlrj5"]
+size = Vector2(54, 28)
+
+[node name="hearts_potion_chest" type="Node2D"]
+
+[node name="chest_closed" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_pd80p")
+region_enabled = true
+region_rect = Rect2(0, 64, 16, 16)
+
+[node name="chest_opened" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_pd80p")
+region_enabled = true
+region_rect = Rect2(16, 64, 16, 16)
+
+[node name="give_potion" type="Area2D" parent="."]
+script = ExtResource("2_1fy32")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="give_potion"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_mlrj5")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ienhw")
+
+[connection signal="body_entered" from="give_potion" to="give_potion" method="_on_body_entered"]

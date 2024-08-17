@@ -1,0 +1,90 @@
+[gd_scene load_steps=14 format=3 uid="uid://c6iqq45ad71p5"]
+
+[ext_resource type="Texture2D" uid="uid://ccbtjtt6cu4l6" path="res://Sprites/Character Sprites/NPCs/Salazar The Almighty (John).png" id="1_sylif"]
+[ext_resource type="Script" path="res://Scripts/NPCscripts/SALAZARTHEALMIGHTY/Left.gd" id="2_7td71"]
+[ext_resource type="Script" path="res://Scripts/NPCscripts/SALAZARTHEALMIGHTY/Right.gd" id="3_dy2yp"]
+[ext_resource type="PackedScene" uid="uid://bfu2t5lymugwr" path="res://Scenes/database.tscn" id="4_mvewt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpnli"]
+atlas = ExtResource("1_sylif")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0v7si"]
+atlas = ExtResource("1_sylif")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1240b"]
+atlas = ExtResource("1_sylif")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54dq2"]
+atlas = ExtResource("1_sylif")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_heifj"]
+atlas = ExtResource("1_sylif")
+region = Rect2(64, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmgop"]
+atlas = ExtResource("1_sylif")
+region = Rect2(80, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8aapb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpnli")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0v7si")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1240b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54dq2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_heifj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rmgop")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p7hye"]
+size = Vector2(23, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b2cbs"]
+size = Vector2(24, 36)
+
+[node name="Gerald (salazar)" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8aapb")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="Left" type="Area2D" parent="."]
+script = ExtResource("2_7td71")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left"]
+position = Vector2(-18.5, -10)
+shape = SubResource("RectangleShape2D_p7hye")
+
+[node name="Right" type="Area2D" parent="."]
+script = ExtResource("3_dy2yp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right"]
+position = Vector2(20, -10)
+shape = SubResource("RectangleShape2D_b2cbs")
+
+[node name="Database" parent="." instance=ExtResource("4_mvewt")]
+
+[connection signal="body_entered" from="Left" to="Left" method="_on_body_entered"]
+[connection signal="body_exited" from="Left" to="Left" method="_on_body_exited"]
+[connection signal="body_entered" from="Right" to="Right" method="_on_body_entered"]
+[connection signal="body_exited" from="Right" to="Right" method="_on_body_exited"]

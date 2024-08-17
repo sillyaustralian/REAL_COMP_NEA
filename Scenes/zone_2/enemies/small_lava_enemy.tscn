@@ -1,0 +1,96 @@
+[gd_scene load_steps=15 format=3 uid="uid://crck40njyqw7x"]
+
+[ext_resource type="Texture2D" uid="uid://dfbayvc0mphsc" path="res://Sprites/Character Sprites/Enemies/Zone 2/Small_lava_enemy.png" id="1_72845"]
+[ext_resource type="Script" path="res://Scripts/zone_2/enemies/small_lava_enemy.gd" id="1_x4trx"]
+[ext_resource type="PackedScene" uid="uid://berixba5mwjky" path="res://Scenes/killzone.tscn" id="2_s1wpi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxbtd"]
+atlas = ExtResource("1_72845")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hd2qi"]
+atlas = ExtResource("1_72845")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ja6y"]
+atlas = ExtResource("1_72845")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfk8i"]
+atlas = ExtResource("1_72845")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wh7o3"]
+atlas = ExtResource("1_72845")
+region = Rect2(64, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p33y2"]
+atlas = ExtResource("1_72845")
+region = Rect2(80, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ok5cj"]
+atlas = ExtResource("1_72845")
+region = Rect2(96, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2s6p0"]
+atlas = ExtResource("1_72845")
+region = Rect2(112, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q1evq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxbtd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hd2qi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ja6y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qfk8i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wh7o3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p33y2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ok5cj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2s6p0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fga1x"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nal0c"]
+radius = 7.0
+
+[node name="Small_lava_enemy" type="Node2D"]
+rotation = 3.14159
+script = ExtResource("1_x4trx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_q1evq")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="killzone" parent="." instance=ExtResource("2_s1wpi")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_fga1x")
+
+[node name="player_attacked" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_attacked"]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_nal0c")

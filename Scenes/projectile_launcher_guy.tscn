@@ -1,0 +1,159 @@
+[gd_scene load_steps=20 format=3 uid="uid://4qpr3tpru3ey"]
+
+[ext_resource type="Script" path="res://Scripts/enemies/projectile_launcher_guy.gd" id="1_ivi56"]
+[ext_resource type="Texture2D" uid="uid://dkwf746eo4gdv" path="res://Sprites/Character Sprites/Enemies/Projectile_slime.png" id="1_wq4fs"]
+[ext_resource type="Script" path="res://Scripts/enemies/damage areas/Damage_area_projectile_guy.gd" id="3_hd0jy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f43kx"]
+atlas = ExtResource("1_wq4fs")
+region = Rect2(0, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cul7u"]
+atlas = ExtResource("1_wq4fs")
+region = Rect2(16, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qas08"]
+atlas = ExtResource("1_wq4fs")
+region = Rect2(32, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_it3wu"]
+atlas = ExtResource("1_wq4fs")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41ij5"]
+atlas = ExtResource("1_wq4fs")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwvpn"]
+atlas = ExtResource("1_wq4fs")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjxf3"]
+atlas = ExtResource("1_wq4fs")
+region = Rect2(48, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6tfq"]
+atlas = ExtResource("1_wq4fs")
+region = Rect2(64, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ghtg"]
+atlas = ExtResource("1_wq4fs")
+region = Rect2(80, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bqdf"]
+atlas = ExtResource("1_wq4fs")
+region = Rect2(96, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1f114"]
+atlas = ExtResource("1_wq4fs")
+region = Rect2(112, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rv5l3"]
+atlas = ExtResource("1_wq4fs")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbxox"]
+atlas = ExtResource("1_wq4fs")
+region = Rect2(16, 64, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mflrk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f43kx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cul7u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qas08")
+}],
+"loop": true,
+"name": &"Been Hit",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_it3wu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41ij5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vwvpn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjxf3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i6tfq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ghtg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6bqdf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1f114")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rv5l3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbxox")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 14.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7ex4d"]
+radius = 3.20156
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nvdg1"]
+radius = 35.0
+
+[node name="Projectile launcher guy" type="Node2D"]
+script = ExtResource("1_ivi56")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_mflrk")
+animation = &"Been Hit"
+autoplay = "idle"
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+target_position = Vector2(4, 0)
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-4, 0)
+
+[node name="RayCastForward" type="RayCast2D" parent="."]
+position = Vector2(7, 0)
+target_position = Vector2(0, 15)
+
+[node name="RayCastBackward" type="RayCast2D" parent="."]
+position = Vector2(-9, 0)
+target_position = Vector2(0, 15)
+
+[node name="been_hit" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="death_animation" type="Timer" parent="."]
+
+[node name="Damage_area" type="Area2D" parent="." groups=["enemies"]]
+script = ExtResource("3_hd0jy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Damage_area"]
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_7ex4d")
+
+[node name="player_detector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_detector"]
+shape = SubResource("CircleShape2D_nvdg1")
+
+[connection signal="timeout" from="been_hit" to="." method="_on_been_hit_timeout"]
+[connection signal="timeout" from="death_animation" to="." method="_on_death_animation_timeout"]
+[connection signal="body_entered" from="Damage_area" to="." method="_on_damage_area_body_entered"]
+[connection signal="body_entered" from="player_detector" to="." method="_on_player_detector_body_entered"]

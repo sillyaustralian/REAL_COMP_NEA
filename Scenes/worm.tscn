@@ -1,0 +1,159 @@
+[gd_scene load_steps=19 format=3 uid="uid://b4v65ktno8qy1"]
+
+[ext_resource type="Texture2D" uid="uid://b3gxer8c80h0" path="res://Sprites/Environmental Sprites/worm.png" id="1_boerv"]
+
+[sub_resource type="GDScript" id="GDScript_k0q5t"]
+script/source = "extends Node2D
+@onready var animated_sprite = $AnimatedSprite2D
+
+const SPEED = 15
+var ground = false
+
+func ready():
+	ground = false
+	
+func _process(delta):
+	worm_animation()
+	position.x += SPEED * delta
+	if GlobalVars.goat_left_angry:
+		if not ground:
+			animated_sprite.play(\"startled\")
+			var timer = Timer.new()
+			timer.wait_time = 0.7
+			add_child(timer)
+			timer.start()
+			await timer.timeout
+			timer.queue_free()
+			ground = true 
+
+func worm_animation():
+	if not GlobalVars.goat_left_angry:
+		animated_sprite.play(\"default\")
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtjyj"]
+atlas = ExtResource("1_boerv")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_doqcd"]
+atlas = ExtResource("1_boerv")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gemoc"]
+atlas = ExtResource("1_boerv")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kc0oc"]
+atlas = ExtResource("1_boerv")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6qym"]
+atlas = ExtResource("1_boerv")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aywrh"]
+atlas = ExtResource("1_boerv")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6jcbv"]
+atlas = ExtResource("1_boerv")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcg74"]
+atlas = ExtResource("1_boerv")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mj4qg"]
+atlas = ExtResource("1_boerv")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7trpu"]
+atlas = ExtResource("1_boerv")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ty2y"]
+atlas = ExtResource("1_boerv")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77xaq"]
+atlas = ExtResource("1_boerv")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klhay"]
+atlas = ExtResource("1_boerv")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t824t"]
+atlas = ExtResource("1_boerv")
+region = Rect2(96, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qdep"]
+atlas = ExtResource("1_boerv")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ahgsj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtjyj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_doqcd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gemoc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kc0oc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6qym")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aywrh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6jcbv")
+}],
+"loop": false,
+"name": &"default",
+"speed": 14.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wcg74")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mj4qg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7trpu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ty2y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77xaq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_klhay")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t824t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6qdep")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"startled",
+"speed": 10.0
+}]
+
+[node name="Worm" type="Node2D"]
+script = SubResource("GDScript_k0q5t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ahgsj")
