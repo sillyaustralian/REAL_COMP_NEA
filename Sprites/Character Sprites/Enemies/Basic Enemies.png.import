@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhuugigb6usog"
-path="res://.godot/imported/Grassland.png-7786f1812d9f7c037d2563e2c16f8ce2.ctex"
+uid="uid://bheajgyhuencv"
+path="res://.godot/imported/Basic Enemies.png-a8e259554ded637d96e95f81d1ff3d04.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Environmental Sprites/Grassland.png"
-dest_files=["res://.godot/imported/Grassland.png-7786f1812d9f7c037d2563e2c16f8ce2.ctex"]
+source_file="res://Sprites/Character Sprites/Enemies/Basic Enemies.png"
+dest_files=["res://.godot/imported/Basic Enemies.png-a8e259554ded637d96e95f81d1ff3d04.ctex"]
 
 [params]
 

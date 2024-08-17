@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhuugigb6usog"
-path="res://.godot/imported/Grassland.png-7786f1812d9f7c037d2563e2c16f8ce2.ctex"
+uid="uid://cir1oisyxxk4k"
+path="res://.godot/imported/shrooms_lighting.png-51cd4c1c267f9b02bf48ff8aacb76a81.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Environmental Sprites/Grassland.png"
-dest_files=["res://.godot/imported/Grassland.png-7786f1812d9f7c037d2563e2c16f8ce2.ctex"]
+source_file="res://Sprites/Environmental Sprites/shrooms_lighting.png"
+dest_files=["res://.godot/imported/shrooms_lighting.png-51cd4c1c267f9b02bf48ff8aacb76a81.ctex"]
 
 [params]
 

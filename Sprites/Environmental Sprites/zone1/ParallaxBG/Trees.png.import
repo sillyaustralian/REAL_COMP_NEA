@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhuugigb6usog"
-path="res://.godot/imported/Grassland.png-7786f1812d9f7c037d2563e2c16f8ce2.ctex"
+uid="uid://cbar8ggaej6h4"
+path="res://.godot/imported/Trees.png-29ede32a1a5ec8f7efa400af168410be.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Environmental Sprites/Grassland.png"
-dest_files=["res://.godot/imported/Grassland.png-7786f1812d9f7c037d2563e2c16f8ce2.ctex"]
+source_file="res://Sprites/Environmental Sprites/zone1/ParallaxBG/Trees.png"
+dest_files=["res://.godot/imported/Trees.png-29ede32a1a5ec8f7efa400af168410be.ctex"]
 
 [params]
 

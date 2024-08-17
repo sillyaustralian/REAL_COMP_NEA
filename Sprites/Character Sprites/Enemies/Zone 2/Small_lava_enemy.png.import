@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhuugigb6usog"
-path="res://.godot/imported/Grassland.png-7786f1812d9f7c037d2563e2c16f8ce2.ctex"
+uid="uid://dfbayvc0mphsc"
+path="res://.godot/imported/Small_lava_enemy.png-bc3be44fc24cc2c4cd503bd8417f6392.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Environmental Sprites/Grassland.png"
-dest_files=["res://.godot/imported/Grassland.png-7786f1812d9f7c037d2563e2c16f8ce2.ctex"]
+source_file="res://Sprites/Character Sprites/Enemies/Zone 2/Small_lava_enemy.png"
+dest_files=["res://.godot/imported/Small_lava_enemy.png-bc3be44fc24cc2c4cd503bd8417f6392.ctex"]
 
 [params]
 

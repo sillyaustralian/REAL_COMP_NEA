@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhuugigb6usog"
-path="res://.godot/imported/Grassland.png-7786f1812d9f7c037d2563e2c16f8ce2.ctex"
+uid="uid://bnh3dwnjb4r3q"
+path="res://.godot/imported/Magma_monster.png-9112cfe18375a0e2f1d38d3956938961.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Environmental Sprites/Grassland.png"
-dest_files=["res://.godot/imported/Grassland.png-7786f1812d9f7c037d2563e2c16f8ce2.ctex"]
+source_file="res://Sprites/Character Sprites/Enemies/Zone 2/Magma_monster.png"
+dest_files=["res://.godot/imported/Magma_monster.png-9112cfe18375a0e2f1d38d3956938961.ctex"]
 
 [params]
 

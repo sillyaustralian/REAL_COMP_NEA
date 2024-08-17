@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhuugigb6usog"
-path="res://.godot/imported/Grassland.png-7786f1812d9f7c037d2563e2c16f8ce2.ctex"
+uid="uid://epa7xnjd8878"
+path="res://.godot/imported/Goat.png-5a08890b7ed443e68f9f7b3bc07a11c4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Environmental Sprites/Grassland.png"
-dest_files=["res://.godot/imported/Grassland.png-7786f1812d9f7c037d2563e2c16f8ce2.ctex"]
+source_file="res://Sprites/Character Sprites/Enemies/Goat.png"
+dest_files=["res://.godot/imported/Goat.png-5a08890b7ed443e68f9f7b3bc07a11c4.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhuugigb6usog"
-path="res://.godot/imported/Grassland.png-7786f1812d9f7c037d2563e2c16f8ce2.ctex"
+uid="uid://dkwf746eo4gdv"
+path="res://.godot/imported/Projectile_slime.png-4d231ce17ba96b34493c2ba531ebebca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Environmental Sprites/Grassland.png"
-dest_files=["res://.godot/imported/Grassland.png-7786f1812d9f7c037d2563e2c16f8ce2.ctex"]
+source_file="res://Sprites/Character Sprites/Enemies/Projectile_slime.png"
+dest_files=["res://.godot/imported/Projectile_slime.png-4d231ce17ba96b34493c2ba531ebebca.ctex"]
 
 [params]
 
