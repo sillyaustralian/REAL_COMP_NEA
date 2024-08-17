@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://w1xttkkpbd6p"
+path="res://.godot/imported/Brute_sound_3 - 04:08:2024, 16.57.wav-4fe6ae426f34a888a1acde0355b00fbe.sample"
+
+[deps]
+
+source_file="res://SFX/Dwarven_brute/Brute_sound_3 - 04:08:2024, 16.57.wav"
+dest_files=["res://.godot/imported/Brute_sound_3 - 04:08:2024, 16.57.wav-4fe6ae426f34a888a1acde0355b00fbe.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

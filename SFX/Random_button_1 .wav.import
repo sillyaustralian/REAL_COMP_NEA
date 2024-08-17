@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dac0eu8hnqcnn"
+path="res://.godot/imported/Random_button_1 .wav-02b4aefa10c7a2fbbe3a1a750817cd12.sample"
+
+[deps]
+
+source_file="res://SFX/Random_button_1 .wav"
+dest_files=["res://.godot/imported/Random_button_1 .wav-02b4aefa10c7a2fbbe3a1a750817cd12.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

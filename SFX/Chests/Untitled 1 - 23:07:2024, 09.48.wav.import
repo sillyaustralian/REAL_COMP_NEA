@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bi65gawtq4v8c"
+path="res://.godot/imported/Untitled 1 - 23:07:2024, 09.48.wav-0c5d0b2bfe1975eddc277654a7a72e53.sample"
+
+[deps]
+
+source_file="res://SFX/Chests/Untitled 1 - 23:07:2024, 09.48.wav"
+dest_files=["res://.godot/imported/Untitled 1 - 23:07:2024, 09.48.wav-0c5d0b2bfe1975eddc277654a7a72e53.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
